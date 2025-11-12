@@ -101,15 +101,19 @@ const menuItemVariants: Variants = {
   closed: { 
     opacity: 0, 
     y: 20,
-    transition: { duration: 0.2 }
+    transition: { 
+      duration: 0.2,
+      ease: [0.4, 0, 0.2, 1]
+    }
   },
   open: { 
     opacity: 1, 
     y: 0,
     transition: { 
       type: 'spring',
-      stiffness: 300,
-      damping: 30
+      stiffness: 400,
+      damping: 30,
+      mass: 0.8
     }
   }
 }
@@ -118,16 +122,18 @@ const menuContainerVariants: Variants = {
   closed: {
     opacity: 0,
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.03,
       staggerDirection: -1,
-      delayChildren: 0
+      delayChildren: 0,
+      duration: 0.2
     }
   },
   open: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1
+      staggerChildren: 0.06,
+      delayChildren: 0.1,
+      duration: 0.3
     }
   }
 }
@@ -372,8 +378,9 @@ export function SiteHeader() {
               }}
               transition={{
                 type: 'spring',
-                stiffness: 400,
-                damping: 30,
+                stiffness: 500,
+                damping: 35,
+                mass: 0.5,
               }}
             />
             {/* Middle line */}
@@ -385,8 +392,9 @@ export function SiteHeader() {
               }}
               transition={{
                 type: 'spring',
-                stiffness: 400,
-                damping: 30,
+                stiffness: 500,
+                damping: 35,
+                mass: 0.5,
               }}
             />
             {/* Bottom line */}
@@ -399,8 +407,9 @@ export function SiteHeader() {
               }}
               transition={{
                 type: 'spring',
-                stiffness: 400,
-                damping: 30,
+                stiffness: 500,
+                damping: 35,
+                mass: 0.5,
               }}
             />
           </div>
@@ -415,7 +424,8 @@ export function SiteHeader() {
               key="backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, transition: { duration: 0.2 } }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
               className="fixed inset-0 z-40 bg-background/95 backdrop-blur-md"
               style={{ 
                 top: 0,

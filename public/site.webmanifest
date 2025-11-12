@@ -1,10 +1,12 @@
 {
-  "name": "Noor Alden Mosa Portfolio",
-  "short_name": "Noor Portfolio",
+  "name": "NM Portfolio - Noor Alden Mosa",
+  "short_name": "NM Portfolio",
+  "description": "Full stack & AI engineer portfolio",
   "display": "standalone",
   "start_url": "/",
-  "background_color": "#111827",
-  "theme_color": "#111827",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/apple-touch-icon.png",
@@ -15,7 +17,14 @@
     {
       "src": "/favicon-16x16.png",
       "sizes": "16x16",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon",
+      "purpose": "any"
     }
   ]
 }

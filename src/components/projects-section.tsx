@@ -131,14 +131,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
         </div>
       </div>
       <div className="p-6">
-        <div className="flex items-start justify-between">
-          <div>
+        <div className={project.comingSoon ? "flex flex-col items-center text-center" : "flex items-start justify-between"}>
+          <div className={project.comingSoon ? "w-full" : ""}>
             <h3 className="text-lg font-semibold">{project.title}</h3>
             <p className="mt-1 text-sm text-muted-foreground">{project.description}</p>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className={project.comingSoon ? "mt-4 flex items-center justify-center" : "flex items-center space-x-2"}>
             {project.comingSoon ? (
-              <span className="rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase text-primary shadow-sm">
+              <span className="rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-semibold uppercase text-primary shadow-sm">
                 Coming Soon
               </span>
             ) : (
