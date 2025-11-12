@@ -1,22 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Noor's Portfolio
+
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- Responsive design that works on all devices
+- Dark/light mode support
+- Contact form with email notifications
+- Project showcase with filtering
+- Skills section with progress bars
+- Smooth animations and transitions
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 16.8 or later
+- npm, yarn, or pnpm
+- Resend API key for contact form functionality
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/portfolio.git
+   cd portfolio
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   # or
+   yarn
+   # or
+   pnpm install
+   ```
+
+3. Set up environment variables
+   Create a `.env.local` file in the root directory and add the following:
+   ```
+   RESEND_API_KEY=your_resend_api_key_here
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
+   ```
+
+4. Run the development server
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Environment Variables
+
+To run this project, you'll need to set up the following environment variables in your `.env.local` file:
+
+- `RESEND_API_KEY`: Your Resend API key for sending emails
+- `NEXT_PUBLIC_APP_URL`: The base URL of your application (e.g., http://localhost:3000 for development)
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type checking
+- [Tailwind CSS](https://tailwindcss.com/) - Styling
+- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [Resend](https://resend.com/) - Email sending
+- [Lucide Icons](https://lucide.dev/) - Icons
+
+## License
+
+This project is licensed under the MIT License.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
