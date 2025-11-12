@@ -58,14 +58,14 @@ export const metadata: Metadata = {
   authors: [
     {
       name: 'Noor Alden Mosa',
-      url: 'https://nooralden.com',
+      url: 'https://nm97portfolio.vercel.app',
     },
   ],
   creator: 'Noor Alden Mosa',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://nooralden.com',
+    url: 'https://nm97portfolio.vercel.app',
     title: 'nmPortfolio | Noor Alden Mosa',
     description: 'Full stack & AI engineer delivering FinTech platforms, intelligent directories, and immersive storytelling products.',
     siteName: 'Noor Alden Mosa',
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  metadataBase: new URL('https://nooralden.com'),
+  metadataBase: new URL('https://nm97portfolio.vercel.app'),
   alternates: {
     canonical: '/',
   },
@@ -99,6 +99,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
       </head>
       <body
         className={cn(

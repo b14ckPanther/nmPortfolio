@@ -33,9 +33,18 @@ export async function POST(request: Request) {
     }
 
     if (!transporter || !fromAddress) {
-      console.error('SMTP credentials not configured')
+      console.error('SMTP credentials not configured', {
+        hasUser: !!smtpUser,
+        hasPass: !!smtpPass,
+        hasFrom: !!fromAddress,
+      })
       return NextResponse.json(
-        { error: 'Email service is not configured. Please try again later.' },
+        { 
+          error: 'Email service is not configured. Please check environment variables.',
+          details: process.env.NODE_ENV === 'development' 
+            ? 'Make sure EMAIL_USER, EMAIL_PASS, and EMAIL_FROM are set in .env.local'
+            : 'Make sure environment variables are set in Vercel dashboard'
+        },
         { status: 500 }
       )
     }
@@ -119,8 +128,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Error sending email:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    const errorDetails = error instanceof Error ? error.stack : String(error)
+    
     return NextResponse.json(
-      { error: 'Failed to send message' },
+      { 
+        error: 'Failed to send message',
+        details: process.env.NODE_ENV === 'development' ? errorDetails : 'Please try again later or contact directly via email.'
+      },
       { status: 500 }
     )
   }

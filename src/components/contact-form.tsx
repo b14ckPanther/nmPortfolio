@@ -44,8 +44,10 @@ export function ContactForm() {
       })
 
       if (!response.ok) {
-        const { error } = await response.json().catch(() => ({ error: 'Failed to send message' }))
-        throw new Error(error ?? 'Failed to send message')
+        const data = await response.json().catch(() => ({ error: 'Failed to send message' }))
+        const errorMsg = data.error || 'Failed to send message'
+        const details = data.details ? `\n\n${data.details}` : ''
+        throw new Error(`${errorMsg}${details}`)
       }
 
       toast.success('Message sent successfully! I will get back to you shortly.')

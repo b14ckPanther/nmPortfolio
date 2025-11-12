@@ -43,6 +43,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 body {
@@ -58,6 +61,12 @@ body {
     )
     rgb(var(--background-start-rgb));
   @apply font-sans;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  /* Prevent horizontal scrolling on mobile */
+  touch-action: pan-y;
+  overscroll-behavior-x: none;
 }
 
 /* Custom Scrollbar */
@@ -125,6 +134,19 @@ h4 {
 /* Custom Components */
 .container {
   @apply px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl w-full;
+  overflow-x: hidden;
+}
+
+/* Prevent horizontal overflow */
+img, video, iframe, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent horizontal scroll on main containers */
+main, section, article, header, footer {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 .section {

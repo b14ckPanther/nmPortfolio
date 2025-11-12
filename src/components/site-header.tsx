@@ -136,37 +136,82 @@ export function SiteHeader() {
   const pathname = usePathname()
   const [scrolled, setScrolled] = React.useState(false)
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+  const scrollPositionRef = React.useRef(0)
 
   const toggleMenu = React.useCallback(() => {
     setIsMenuOpen((prev) => {
       const newState = !prev
-      // Update body overflow immediately
-      document.body.style.overflow = newState ? 'hidden' : 'unset'
+      
+      if (newState) {
+        // Save current scroll position
+        scrollPositionRef.current = window.scrollY || window.pageYOffset || document.documentElement.scrollTop
+        
+        // Lock scroll position
+        document.body.style.position = 'fixed'
+        document.body.style.top = `-${scrollPositionRef.current}px`
+        document.body.style.left = '0'
+        document.body.style.right = '0'
+        document.body.style.overflow = 'hidden'
+        document.documentElement.style.overflow = 'hidden'
+      } else {
+        // Restore scroll position
+        document.body.style.position = ''
+        document.body.style.top = ''
+        document.body.style.left = ''
+        document.body.style.right = ''
+        document.body.style.overflow = ''
+        document.documentElement.style.overflow = ''
+        
+        // Restore scroll position
+        window.scrollTo(0, scrollPositionRef.current)
+      }
+      
       return newState
     })
   }, [])
 
   const closeMenu = React.useCallback(() => {
     setIsMenuOpen(false)
-    document.body.style.overflow = 'unset'
+    
+    // Restore scroll position
+    document.body.style.position = ''
+    document.body.style.top = ''
+    document.body.style.left = ''
+    document.body.style.right = ''
+    document.body.style.overflow = ''
+    document.documentElement.style.overflow = ''
+    
+    // Restore scroll position
+    window.scrollTo(0, scrollPositionRef.current)
   }, [])
 
   const handleNavClick = React.useCallback(
     (event: React.MouseEvent<HTMLAnchorElement>, navItem: NavItem) => {
-      // Always close menu immediately
+      // Save scroll position before closing
+      const currentScroll = window.scrollY || window.pageYOffset || document.documentElement.scrollTop
+      
+      // Always close menu immediately and restore scroll
       setIsMenuOpen(false)
-      document.body.style.overflow = 'unset'
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.left = ''
+      document.body.style.right = ''
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
+      
+      // Restore scroll position immediately
+      window.scrollTo(0, scrollPositionRef.current || currentScroll)
       
       if (navItem.sectionId) {
         event.preventDefault()
-        // Wait for menu to start closing, then scroll
+        // Wait for menu to close and scroll to restore, then scroll to section
         requestAnimationFrame(() => {
           setTimeout(() => {
             const element = document.getElementById(navItem.sectionId!)
             if (element) {
               element.scrollIntoView({ behavior: 'smooth', block: 'start' })
             }
-          }, 100)
+          }, 150)
         })
       }
       // For non-section links, the default navigation will happen
@@ -183,19 +228,18 @@ export function SiteHeader() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Prevent scrolling when menu is open
+  // Cleanup on unmount
   React.useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      // Ensure scroll is restored when menu closes
-      document.body.style.overflow = 'unset'
-    }
     return () => {
-      // Cleanup: always restore scroll on unmount
-      document.body.style.overflow = 'unset'
+      // Always restore scroll on unmount
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.left = ''
+      document.body.style.right = ''
+      document.body.style.overflow = ''
+      document.documentElement.style.overflow = ''
     }
-  }, [isMenuOpen])
+  }, [])
 
   // Close menu on route change (but not on initial mount)
   React.useEffect(() => {
@@ -373,6 +417,13 @@ export function SiteHeader() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, transition: { duration: 0.2 } }}
               className="fixed inset-0 z-40 bg-background/95 backdrop-blur-md"
+              style={{ 
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                touchAction: 'none'
+              }}
               onClick={closeMenu}
             />
             <motion.div
@@ -381,7 +432,14 @@ export function SiteHeader() {
               initial="closed"
               animate="open"
               exit="closed"
-              className="fixed inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
+              className="fixed inset-0 z-50 flex flex-col items-center justify-center pointer-events-none overflow-y-auto"
+              style={{ 
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                WebkitOverflowScrolling: 'touch'
+              }}
               onClick={(e) => e.stopPropagation()}
             >
               <nav 
