@@ -44,7 +44,7 @@ const projects: Project[] = [
     id: 3,
     title: 'Wen Web',
     description: 'The command deck powering Wen’s ecosystem. Feature flags are in place—full reveal drops soon.',
-    image: '/images/projects/wen-directory.jpg',
+    image: '/images/projects/wen-web.jpg',
     tags: ['Next.js', 'Supabase', 'Stealth Ops'],
     github: null,
     demo: null,
