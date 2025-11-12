@@ -16,7 +16,7 @@ const focusAreas = [
   {
     title: 'AI-Powered Discovery',
     description:
-      'From Wen's multi-tenant marketplace to AI semantic search services, I mix Supabase, Firebase, Qdrant, and OpenAI tooling to deliver fast, context-aware results for users on the move.',
+      "From Wen's multi-tenant marketplace to AI semantic search services, I mix Supabase, Firebase, Qdrant, and OpenAI tooling to deliver fast, context-aware results for users on the move.",
     projects: ['Wen Mobile', 'Wen Web'],
   },
   {
@@ -39,7 +39,7 @@ const journey = [
     year: '2024',
     title: 'Wen Ecosystem',
     summary:
-      'Scaled Wen's Flutter mobile platform and Supabase-driven web admin to deliver AI-assisted search, multi-location curation, and owner onboarding workflows.',
+      "Scaled Wen's Flutter mobile platform and Supabase-driven web admin to deliver AI-assisted search, multi-location curation, and owner onboarding workflows.",
     stack: ['Flutter', 'Supabase', 'Firebase', 'AI Search'],
   },
   {

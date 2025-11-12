@@ -72,7 +72,7 @@ const engagements = [
     period: 'April 2025',
     title: 'Platform Engineer · Wen Web',
     focus:
-      'Designing the back-office experience that will orchestrate Wen's ecosystem expansions across regions.',
+      "Designing the back-office experience that will orchestrate Wen's ecosystem expansions across regions.",
     contributions: [
       'Prototyping RTL-first curation tools without exposing roadmap-sensitive workflows.',
       'Standing up Supabase infrastructure with feature flags so future modules can ship iteratively.',
