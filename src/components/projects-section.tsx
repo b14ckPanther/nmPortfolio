@@ -31,7 +31,7 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'Wen Mobile Directory',
+    title: 'Wen Mobile',
     description: 'A mobile-first discovery experience entering stealth mode—expect AI-guided journeys, live maps, and region-first storytelling.',
     image: '/images/projects/wen-mobile.jpg',
     tags: ['Flutter', 'Stealth Build', 'AI Signals'],

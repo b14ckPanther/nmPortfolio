@@ -58,7 +58,7 @@ const engagements = [
   },
   {
     period: 'April 2025',
-    title: 'Founding Mobile Engineer · Wen Directory (Flutter)',
+    title: 'Founding Mobile Engineer · Wen Mobile',
     focus:
       'Building a multi-region marketplace that pairs mobile-first discovery with tasteful AI-led recommendations.',
     contributions: [
@@ -70,9 +70,9 @@ const engagements = [
   },
   {
     period: 'April 2025',
-    title: 'Platform Engineer · Wen Directory (Web Control Center)',
+    title: 'Platform Engineer · Wen Web',
     focus:
-      'Designing the back-office experience that will orchestrate Wen’s directory expansions across regions.',
+      'Designing the back-office experience that will orchestrate Wen's ecosystem expansions across regions.',
     contributions: [
       'Prototyping RTL-first curation tools without exposing roadmap-sensitive workflows.',
       'Standing up Supabase infrastructure with feature flags so future modules can ship iteratively.',

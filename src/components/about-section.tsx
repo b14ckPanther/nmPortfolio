@@ -11,7 +11,7 @@ const highlights = [
   {
     title: 'AI-First Experiences',
     description:
-      'Pairing LLMs, vector search, and motion design to craft immersive journeys such as Nexus Chronicle and the Wen directory.',
+      'Pairing LLMs, vector search, and motion design to craft immersive journeys such as Nexus Chronicle and Wen Web.',
   },
   {
     title: 'Product Delivery',
