@@ -21,11 +21,11 @@ const openSans = localFont({
   variable: '--font-sans',
 });
 
-// Self-hosted Dancing Script (Bold 700)
-const dancingScript = localFont({
+// Self-hosted Exo (Bold 700)
+const exoBold = localFont({
   src: [
     {
-      path: '../../public/fonts/DancingScript-Bold.woff2',
+      path: '../../public/fonts/Exo-Bold.woff2',
       weight: '700',
       style: 'normal',
     },
@@ -115,7 +115,7 @@ export default function RootLayout({
         className={cn(
           'min-h-screen bg-background font-sans antialiased',
           openSans.variable,
-          dancingScript.variable
+          exoBold.variable
         )}
       >
         <ThemeProvider
